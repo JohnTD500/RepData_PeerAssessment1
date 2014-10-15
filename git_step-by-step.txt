@@ -1,0 +1,157 @@
+Step-by-step instructions for setting up Git Hub repository.
+
+Reference: https://help.github.com/articles/create-a-repo
+Reference: Slides from 01_DataToolkit
+Reference: /home/jwt/School/Coursera/DataScience_JohnsHopkins/01_DataToolkit/Pro_Git.english.pdf
+
+1) Open https://github.com/
+
+2) Sign-in.
+
+3) In the upper-right corner of any page, click +, and then click
+   "New repository".
+
+4) Create a short, memorable name for your repository:
+   "DataScience-03_GetCleanData"
+
+5) Add a description of your repository:
+   "Created for the Coursera course "Getting and Cleaning Data" which is part
+   of the Johns Hopkins University Data Science Specialization"
+
+6) Choose "public" repository.
+
+7) Select Initialize this repository with a README.
+
+8) Click Create repository.
+
+9) In local directory, initialize git:
+
+ninja{jwt}% cd /home/jwt/School/Coursera/DataScience_JohnsHopkins/03_GetCleanData/Project
+ninja{jwt}% git init
+
+10) Create a local copy of the git repository:
+
+ninja{jwt}% git remote add origin https://github.com/JohnTD500/DataScience-03_GetCleanData.git
+
+11) At this point, we can double-check the set up:
+
+ninja{jwt}% git config --global core.editor emacs  [only need to do this once]
+
+ninja{jwt}% git config --list
+user.name=John Tiede
+user.email=j.tiede@comcast.net
+color.ui=true
+core.editor=emacs
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+remote.origin.url=https://github.com/JohnTD500/DataScience-03_GetCleanData.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+
+12) Initial commit:
+
+ninja{jwt}% git add Project.pdf
+ninja{jwt}% git add Project.Rmd
+ninja{jwt}% git add README.txt
+ninja{jwt}% git add run_analysis.R
+ninja{jwt}% git add Slide1.png
+ninja{jwt}% git add submission_file.table
+
+13) Commit changes:
+
+ninja{jwt}% git commit -m "Initial project commit"
+[master (root-commit) f8ac0a3] Initial project commit
+ 6 files changed, 14785 insertions(+)
+ create mode 100644 Project.Rmd
+ create mode 100644 Project.pdf
+ create mode 100644 README.txt
+ create mode 100644 Slide1.png
+ create mode 100644 run_analysis.R
+ create mode 100644 submission_file.table
+
+14) Save remote files locally first:
+
+ninja{jwt}% git pull https://github.com/JohnTD500/DataScience-03_GetCleanData.git master
+From https://github.com/JohnTD500/DataScience-03_GetCleanData
+ * branch            master     -> FETCH_HEAD
+Merge made by the 'recursive' strategy.
+ README.md | 29 +++++++++++++++++++++++++++++
+ 1 file changed, 29 insertions(+)
+ create mode 100644 README.md
+
+15) Save local commits to Github
+
+ninja{jwt}% git push
+warning: push.default is unset; its implicit value is changing in
+Git 2.0 from 'matching' to 'simple'. To squelch this message
+and maintain the current behavior after the default changes, use:
+
+  git config --global push.default matching
+
+To squelch this message and adopt the new behavior now, use:
+
+  git config --global push.default simple
+
+When push.default is set to 'matching', git will push local branches
+to the remote branches that already exist with the same name.
+
+In Git 2.0, Git will default to the more conservative 'simple'
+behavior, which only pushes the current branch to the corresponding
+remote branch that 'git pull' uses to update the current branch.
+
+See 'git help config' and search for 'push.default' for further information.
+(the 'simple' mode was introduced in Git 1.7.11. Use the similar mode
+'current' instead of 'simple' if you sometimes use older versions of Git)
+
+Username for 'https://github.com': JohnTD500
+Password for 'https://JohnTD500@github.com': 
+Counting objects: 11, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (10/10), 451.62 KiB | 0 bytes/s, done.
+Total 10 (delta 2), reused 0 (delta 0)
+To https://github.com/JohnTD500/DataScience-03_GetCleanData.git
+   5ee788d..ffe81ba  master -> master
+
+ninja{jwt}% git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+        deleted:    submission_file.table
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        .#git_step-by-step.txt
+        UCI HAR Dataset/
+        getdata_projectfiles_Dataset.zip
+        git_step-by-step.txt
+        sqldf.pdf
+        submission_file.txt
+        tidy-data.pdf
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+ninja{jwt}% git add submission_file.txt
+ninja{jwt}% git rm submission_file.table
+
+ninja{jwt}% git status
+On branch master
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+        renamed:    submission_file.table -> submission_file.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        .#git_step-by-step.txt
+        UCI HAR Dataset/
+        getdata_projectfiles_Dataset.zip
+        git_step-by-step.txt
+        sqldf.pdf
+        tidy-data.pdf
+
